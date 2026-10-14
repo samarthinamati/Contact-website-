@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b090d">
+  <title>Contact Us | PujariGo</title>
+  <style>
+    :root {
+      --maroon: #5b090d;
+      --orange: #c96a18;
+      --gold: #f0b83f;
+      --cream: #fff8ed;
+      --ink: #321b18;
+      --muted: #75645d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      background: #fffdf9;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--cream);
+      border-bottom: 1px solid #ead9c5;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--maroon);
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .brand span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    .button {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 9px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #fff0d1, #fffaf2, #f8dfbb);
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 25px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.15;
+      margin: 15px 0;
+    }
+
+    h1 span { color: var(--orange); }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    section { padding: 65px 20px; }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      margin: 8px 0;
+    }
+
+    .section-title p, .about p { color: var(--muted); }
+
+    .about {
+      max-width: 780px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about p { margin-top: 12px; }
+
+    .services, .faq { background: var(--cream); }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid #ead9c5;
+      padding: 25px 20px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .service-icon { font-size: 35px; margin-bottom: 10px; }
+
+    .service-card h3 { margin-bottom: 8px; }
+
+    .service-card p { color: var(--muted); font-size: 14px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .contact-info h3, form h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .contact-info > p { color: var(--muted); }
+
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+      align-items: center;
+    }
+
+    .contact-item .icon {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 22px;
+    }
+
+    .contact-item small { display: block; color: var(--muted); }
+
+    .contact-item a {
+      color: var(--maroon);
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    form {
+      padding: 28px;
+      border: 1px solid #ead9c5;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px #5a320f0d;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .field { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #dfd4c7;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 14px;
+      background: #fffefa;
+      color: var(--ink);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #e9b879;
+    }
+
+    textarea { min-height: 125px; resize: vertical; }
+
+    form button { width: 100%; font-size: 15px; }
+
+    .form-note, #form-status {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    details {
+      background: white;
+      border: 1px solid #ead9c5;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 12px;
+    }
+
+    summary { font-weight: bold; cursor: pointer; }
+
+    details p { color: var(--muted); margin-top: 10px; }
+
+    .cta {
+      text-align: center;
+      background: var(--maroon);
+      color: white;
+      padding: 50px 20px;
+    }
+
+    .cta p { color: #f6dfc7; margin: 12px 0 22px; }
+
+    .cta .button {
+      background: var(--gold);
+      color: var(--maroon);
+    }
+
+    footer {
+      background: #321a0d;
+      color: #fbe8d5;
+      padding: 28px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    footer p { margin-top: 7px; color: #d9c0aa; }
+
+    @media (max-width: 720px) {
+      .brand { font-size: 21px; }
+      .brand img { width: 40px; height: 40px; }
+      .nav-links { gap: 10px; font-size: 12px; }
+      .nav-links .optional { display: none; }
+      .nav-links .button { padding: 9px 12px; }
+      .service-grid, .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      section { padding: 48px 18px; }
+      form, .contact-info { padding: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="#home" class="brand">
+        <img src="logo.png" alt="PujariGo logo">
+        <span>PujariGo</span>
+      </a>
+
+      <div class="nav-links">
+        <a class="optional" href="#about">About</a>
+        <a class="optional" href="#services">Services</a>
+        <a class="optional" href="#faq">FAQ</a>
+        <a class="button" href="#contact">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <img class="hero-logo" src="logo.png" alt="PujariGo logo">
+      <div class="eyebrow">PujariGo Customer Support</div>
+      <h1>We're here to <span>help you.</span></h1>
+      <p>
+        Questions about bookings, puja services, or joining as a pujari?
+        Contact us. We're here to help make your puja arrangements easier.
+      </p>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <div class="eyebrow">About PujariGo</div>
+        <h2>Bringing puja services closer to you</h2>
+        <p>
+          PujariGo helps people discover local pujaris and arrange Hindu
+          religious ceremonies conveniently. Our goal is to make finding
+          puja services simpler for families and communities.
+        </p>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">Our Support</div>
+          <h2>How can we help you?</h2>
+          <p>Contact us about any of the following services.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon">🪔</div>
+            <h3>Puja Bookings</h3>
+            <p>Questions about booking a pujari for a home puja or ceremony.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🙏</div>
+            <h3>Pujari Registration</h3>
+            <p>Interested in joining PujariGo and offering puja services?</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">💬</div>
+            <h3>App Support</h3>
+            <p>Need assistance with your account, bookings, or the app?</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">Get in touch</div>
+          <h2>Contact our team</h2>
+          <p>Contact us directly or prepare a message using the form.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Let's talk 🙏</h3>
+            <p>We welcome your questions, feedback, and suggestions.</p>
+
+            <div class="contact-item">
+              <div class="icon">📧</div>
+              <div>
+                <strong>Email</strong>
+                <small>
+                  <a href="mailto:samarthinamati@gmail.com">
+                    samarthinamati@gmail.com
+                  </a>
+                </small>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon">📱</div>
+              <div>
+                <strong>Phone</strong>
+                <small>
+                  <a href="tel:+917676686728">7676686728</a>
+                </small>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon">🌐</div>
+              <div>
+                <strong>Platform</strong>
+                <small>PujariGo — puja bookings made simpler</small>
+              </div>
+            </div>
+          </div>
+
+          <form id="contact-form">
+            <h3>Send us a message</h3>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Full name *</label>
+                <input id="name" name="name" required maxlength="100"
+                  autocomplete="name" placeholder="Your name">
+              </div>
+
+              <div class="field">
+                <label for="email">Email address *</label>
+                <input id="email" name="email" type="email" required
+                  maxlength="254" autocomplete="email"
+                  placeholder="you@example.com">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a topic</option>
+                <option>Booking Support</option>
+                <option>Pujari Registration</option>
+                <option>Account Help</option>
+                <option>Payment Question</option>
+                <option>Feedback</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="message">Your message *</label>
+              <textarea id="message" name="message" required
+                maxlength="5000" placeholder="Tell us how we can help..."></textarea>
+            </div>
+
+            <button class="button" type="submit">Send Message →</button>
+            <p class="form-note">
+              Do not include passwords, OTPs, or payment PINs.
+            </p>
+            <p id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">FAQs</div>
+          <h2>Frequently asked questions</h2>
+        </div>
+
+        <details>
+          <summary>How can I book a pujari?</summary>
+          <p>Open the PujariGo app, explore available pujaris and services,
+          and follow the booking process shown in the app.</p>
+        </details>
+
+        <details>
+          <summary>How can a pujari join PujariGo?</summary>
+          <p>Use the registration process available in the app. Contact
+          our team if you need assistance.</p>
+        </details>
+
+        <details>
+          <summary>Where can I ask about a booking?</summary>
+          <p>Email us at samarthinamati@gmail.com with your question.</p>
+        </details>
+
+        <details>
+          <summary>How can I report an app problem?</summary>
+          <p>Email samarthinamati@gmail.com and describe the problem.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Thank you for choosing PujariGo</h2>
+      <p>We're working to make puja arrangements easier for everyone.</p>
+      <a class="button" href="#contact">Contact Us</a>
+    </section>
+  </main>
+
+  <footer>
+    <strong>🙏 PujariGo</strong>
+    <p>Connecting people with puja services.</p>
+    <p>© <span id="year"></span> PujariGo. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("contact-form").addEventListener(
+      "submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value.trim();
+
+        const mailSubject = encodeURIComponent(
+          "PujariGo Contact: " + subject
+        );
+        const mailBody = encodeURIComponent(
+          "Name: " + name + "\n" +
+          "Email: " + email + "\n\n" +
+          "Message:\n" + message
+        );
+
+        document.getElementById("form-status").textContent =
+          "Opening your email app to send the message.";
+
+        window.location.href =
+          "mailto:samarthinamati@gmail.com?subject=" +
+          mailSubject + "&body=" + mailBody;
+      }
+    );
+  </script>
+</body>
+</html>
